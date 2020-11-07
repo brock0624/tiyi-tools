@@ -38,6 +38,7 @@ public class BatchFileMail {
         for (int i=0;i<filesize;i++) {
             if (files[i].isFile())
                 System.out.println("准备发送第"+i+"个文件，文件名：" + files[i].toString());
+            mailsubject = mailsubject+"-"+files[i].getName();
             MailUtil.send(account, mailto, mailsubject, mailcontent, false, files[i]);
             System.out.println("第"+i+"个文件发送成功，文件名：" + files[i].toString());
         }
@@ -131,7 +132,7 @@ public class BatchFileMail {
                 String pass = cli.getOptionValue("p");
                 String tos = cli.getOptionValue("t");
                 System.out.println("tos: " + tos);
-                String subject = cli.getOptionValue("a");
+                String subject = cli.getOptionValue("s");
                 System.out.println("subject: " + subject);
                 String content = cli.getOptionValue("c");
                 System.out.println("content: " + content);
